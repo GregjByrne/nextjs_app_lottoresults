@@ -1,0 +1,105 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model lottocategory {
+  id            Int             @id @unique(map: "id") @default(autoincrement()) @db.TinyInt
+  lottoCat      String          @db.VarChar(50)
+  lottoTypeId   Int             @db.TinyInt
+  status        Int             @db.TinyInt
+  lottotype     lottotype       @relation(fields: [lottoTypeId], references: [id], onDelete: Cascade, map: "lottocategory_ibfk_1")
+  lottorecords  lottorecords[]
+  rafflenews    rafflenews[]
+  rafflenumbers rafflenumbers[]
+  winnews       winnews[]
+  winrecords    winrecords[]
+
+  @@index([lottoTypeId], map: "lottoTypeId")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model lottorecords {
+  id            Int           @id @unique(map: "id") @default(autoincrement())
+  lottoCatId    Int           @db.TinyInt
+  inputDate     DateTime      @db.Date
+  num_1         Int           @db.TinyInt
+  num_2         Int           @db.TinyInt
+  num_3         Int           @db.TinyInt
+  num_4         Int           @db.TinyInt
+  num_5         Int           @db.TinyInt
+  num_6         Int           @db.TinyInt
+  num_7         Int           @db.TinyInt
+  winValue      Float         @default(0)
+  lottocategory lottocategory @relation(fields: [lottoCatId], references: [id], onDelete: NoAction, map: "lottorecords_ibfk_1")
+
+  @@index([inputDate], map: "inputDate")
+  @@index([lottoCatId], map: "lottoCatId")
+  @@index([lottoCatId], map: "lottoCatId_2")
+}
+
+model lottotype {
+  id            Int             @id @unique(map: "id") @default(autoincrement()) @db.TinyInt
+  lottoType     String          @db.VarChar(50)
+  status        Int             @db.TinyInt
+  lottocategory lottocategory[]
+}
+
+model wincategory {
+  id          Int          @id @default(autoincrement()) @db.TinyInt
+  winCat      String       @db.VarChar(50)
+  lottoTypeId Int          @db.TinyInt
+  winrecords  winrecords[]
+}
+
+model winnews {
+  id            Int           @id @default(autoincrement())
+  inputDate     DateTime      @db.Date
+  lottoCatId    Int           @db.TinyInt
+  winNews       String        @db.Text
+  lottocategory lottocategory @relation(fields: [lottoCatId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "winnews_ibfk_1")
+
+  @@index([lottoCatId], map: "lottoCatId")
+}
+
+model winrecords {
+  inputDate      DateTime      @db.Date
+  lottoCatId     Int           @db.TinyInt
+  winCatId       Int           @db.TinyInt
+  numWinners     Int
+  winAmount      Float
+  emIrishWinners Int           @default(0)
+  emUkWinners    Int           @default(0)
+  emUkWinAmount  Float         @default(0)
+  lottocategory  lottocategory @relation(fields: [lottoCatId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "winrecords_ibfk_1")
+  wincategory    wincategory   @relation(fields: [winCatId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "winrecords_ibfk_2")
+
+  @@id([inputDate, lottoCatId, winCatId])
+  @@index([lottoCatId], map: "lottoCatId")
+  @@index([winCatId], map: "winCatId")
+}
+
+model rafflenews {
+  id            Int           @id @default(autoincrement())
+  lottoCatId    Int           @db.TinyInt
+  inputDate     DateTime      @db.Date
+  raffleNews    String        @db.Text
+  lottocategory lottocategory @relation(fields: [lottoCatId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "rafflenews_ibfk_1")
+
+  @@index([lottoCatId], map: "lottoCatId")
+}
+
+model rafflenumbers {
+  id            Int           @id @default(autoincrement())
+  lottoCatId    Int           @db.TinyInt
+  inputDate     DateTime      @db.Date
+  raffleNumber  String        @db.VarChar(20)
+  lottocategory lottocategory @relation(fields: [lottoCatId], references: [id], onDelete: NoAction, map: "rafflenumbers_ibfk_1")
+
+  @@index([inputDate], map: "inputDate")
+  @@index([lottoCatId], map: "lottoCatId")
+}
