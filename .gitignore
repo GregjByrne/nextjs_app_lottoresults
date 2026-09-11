@@ -46,5 +46,14 @@ libTags.txt
 seed.ts
 test-query.ts
 global-bundle.pem
- 
+
+# Prisma:
 /app/generated/prisma
+
+# Editor and IDE configurations
+.vscode/
+
+# AI IDE and Agent local configurations/skills
+.windsurf/
+.claude/
+.agents/
