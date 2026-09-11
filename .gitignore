@@ -57,3 +57,6 @@ global-bundle.pem
 .windsurf/
 .claude/
 .agents/
+AGENTS.md
+CLAUDE.md
+skills-lock.json
