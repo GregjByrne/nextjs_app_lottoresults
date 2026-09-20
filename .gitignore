@@ -46,7 +46,6 @@ imports.txt
 libTags.txt
 seed.ts
 test-query.ts
-global-bundle.pem
 /data/
 /scripts/
 
