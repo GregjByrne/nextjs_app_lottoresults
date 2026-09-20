@@ -7,6 +7,7 @@ import ResultsCardSkeleton from "@/components/public/resultsCard/resultsCardSkel
 import { CATEGORY_CARD_COUNTS } from "@/constants/categoryCardCounts";
 import RaffleCard from "@/components/public/rafflecard/raffleCard";
 import RaffleCardSkeleton from "@/components/public/rafflecard/raffleCardSkeleton";
+import AdBanner from "@/components/public/googlead/fixedAd";
 
 export default function Home() {
 
@@ -44,6 +45,9 @@ export default function Home() {
           <RaffleCard catid={1} />
         </Suspense>
       </section>
+      {/* <!-- AdId001_lottoresults --> */}
+       <AdBanner adSlot="6414138135" adFormat="auto" dataFullWidthResponsive={ true} />
+       
        <section id='EuroMillions' className="relative mx-auto flex flex-col items-center justify-center py-16 px-4 sm:py-20 lg:pd-28 lg:px-12 max-w-5xl transition-all animate-in" >
         <Suspense fallback={<ResultsCardSkeleton count={CATEGORY_CARD_COUNTS[4]} />}>
           <ResultsCard catid={4} />
@@ -52,6 +56,9 @@ export default function Home() {
           <RaffleCard catid={4} />
         </Suspense>
       </section>
+      {/* <!-- AdId001_lottoresults --> */}
+       <AdBanner adSlot="6414138135" adFormat="auto" dataFullWidthResponsive={ true} />
+
       <section id='DailyMillion' className="relative mx-auto flex flex-col items-center justify-center pt-16 px-4 sm:pt-20 lg:pd-28 lg:px-12 max-w-5xl transition-all animate-in" >
         <Suspense fallback={<ResultsCardSkeleton count={CATEGORY_CARD_COUNTS[15]} />}>
           <ResultsCard catid={15} />
@@ -62,6 +69,9 @@ export default function Home() {
           <ResultsCard catid={11} />
         </Suspense>
       </section>
+      {/* <!-- AdId001_lottoresults --> */}
+       <AdBanner adSlot="6414138135" adFormat="auto" dataFullWidthResponsive={ true} />
+      
       <MainFooter />
     </main>
   );

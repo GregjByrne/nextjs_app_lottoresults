@@ -91,7 +91,6 @@ export function convertResults(rows: ResultsRows[]): TransformedResult[] {
       nums,
       bonusNums,
       winValue: row.winValue,
-      winType: row.winType,
       winNews: row.winNews,
     };
   });

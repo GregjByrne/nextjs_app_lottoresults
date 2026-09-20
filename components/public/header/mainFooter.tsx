@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function MainFooter(){
     return(
         <footer className="bg-[#1B3465] bg-footer-star md:bg-footer-star-tablet bg-no-repeat bg-bottom-right w-full">
-            <search className="bg-[#1E2A3C] flex lg:justify-center lg:items-center h-6 text-white overflow-hidden">
+            <search className="bg-[#1E2A3C] mt-2 flex lg:justify-center lg:items-center h-6 text-white overflow-hidden">
                 <div className="flex flex-col lg:flex-row">
                     
                 </div>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import AdsInjectioin from "@/components/public/googlead/adsInjection";
 
 export const metadata: Metadata = {
   title: {
@@ -60,6 +61,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className="h-full antialiased"
     >
+      <head>
+        <AdsInjectioin pId={process.env.NEXT_ADSENSE_PUB_ID  || ''} />
+      </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

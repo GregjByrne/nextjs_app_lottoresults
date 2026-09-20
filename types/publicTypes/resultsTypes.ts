@@ -20,8 +20,7 @@ export interface TransformedResult {
   nums: number[];
   bonusNums: number[];
   winValue: number;
-  winType: number;
-  winNews: string;
+  winNews: string | null;
 };
 
 export interface NumberCounts {
