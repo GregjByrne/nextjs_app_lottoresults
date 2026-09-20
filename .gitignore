@@ -64,3 +64,6 @@ test-query.ts
 AGENTS.md
 CLAUDE.md
 skills-lock.json
+
+# Allow this specific AWS/Prisma certificate
+!/prisma/production/global-bundle.pem
