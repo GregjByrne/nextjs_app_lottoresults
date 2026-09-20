@@ -54,6 +54,7 @@ global-bundle.pem
 /app/generated/prisma
 /prisma/dev/
 
+
 # Editor and IDE configurations
 .vscode/
 
