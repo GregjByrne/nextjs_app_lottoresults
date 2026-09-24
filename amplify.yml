@@ -6,7 +6,7 @@ frontend:
         - npm ci
     build:
       commands:
-        - env | grep -e CLERK_SECRET_KEY -e NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY -e DATABASE_HOST -e DATABASE_USER -e DATABASE_PASSWORD -e DATABASE_NAME -e SSL_CERT_PATH >> .env.production
+        - env | grep -e CLERK_SECRET_KEY -e NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY -e DATABASE_HOST -e DATABASE_USER -e DATABASE_PASSWORD -e DATABASE_NAME -e SSL_CERT_CONTENT >> .env.production
         - npm run build
   artifacts:
     baseDirectory: .next
@@ -16,3 +16,5 @@ frontend:
     paths:
       - node_modules/**/*
       - .next/cache/**/*
+
+
