@@ -56,8 +56,15 @@ export default function MainFooter(){
                         </div>
                     </div>
                     <div className="text-sm text-white shrink-0">
-                        <div className="lg:size-fit flex justify-end">
-                           ©2026 Conuresites
+                        <div className="lg:size-fit flex justify-end flex-col gap-4">
+                          <div>
+                            ©2026 Conuresites:
+                          </div>
+                          <div>
+                            <a title="Privacy Policy" href="/privacy-policy.html" className="text-sm text-white hover:text-blue-500 hover-underline-animation center">
+                                Privacy Policy:
+                            </a>
+                          </div>
                         </div>
                     </div>
                 </div>
