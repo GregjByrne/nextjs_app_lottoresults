@@ -73,7 +73,6 @@ export default function RaffleNewsTable({ lottoCategorys }: { lottoCategorys: Se
 
   // ******************************************************************************************************
 
-    // console.log(form.formState.errors);
   return (
     <div className="space-y-4">
       <Card className="w-full sm:mx-w-md">

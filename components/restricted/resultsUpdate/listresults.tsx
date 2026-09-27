@@ -1,5 +1,5 @@
 'use client'
-import { normalizeLottoEntry } from "@/utils/admin/adminAction-functions";
+import { normalizeLottoEntry, toLocalDateString } from "@/utils/admin/adminAction-functions";
 import DatePickerInput from "@/components/restricted/resultsinput/form/datepicker";
 import { formSchema, ResultFormValues } from "@/types/adminTypes/formSchema";
 import InputNumbersFormSubmit from "@/components/restricted/resultsinput/form/formButton";
@@ -73,7 +73,7 @@ export default function ListResults({ lottoCategorys }: { lottoCategorys: Select
 
         // setLatestDate(newDate);  ← removed, no longer needed
 
-        const sqlDate = newDate.toISOString().split("T")[0];
+        const sqlDate = toLocalDateString(newDate)
         const row = await getResultsForUpdate({ categories: searchCatId, date: sqlDate });
 
         if (!row) return;
@@ -104,11 +104,10 @@ export default function ListResults({ lottoCategorys }: { lottoCategorys: Select
   // onChange of category/date -> reload matching row into form
   const loadResultsForSelection = useCallback(
     async (cat: number, date: Date) => {
-      // console.log("loadResultsForSelection called:", { cat, date, isInitialized });
       if (!isInitialized) return; // skip if initial load hasn't finished yet
       if (!date || isNaN(date.getTime())) return;
 
-      const sqlDate = date.toISOString().split("T")[0];
+      const sqlDate = toLocalDateString(date);
       const row = await getResultsForUpdate({ categories: Number(cat), date: sqlDate });
 
       if (!row) {
@@ -145,7 +144,7 @@ export default function ListResults({ lottoCategorys }: { lottoCategorys: Select
       return;
     }
 
-    const inputDate = sqlDate.toISOString().split("T")[0];
+    const inputDate = toLocalDateString(sqlDate);
     router.push(`/admin/updatewinamount/${lottoCatId}?inputDate=${inputDate}`);
   }
 
@@ -158,7 +157,7 @@ export default function ListResults({ lottoCategorys }: { lottoCategorys: Select
       return;
     }
 
-    const inputDate = sqlDate.toISOString().split("T")[0];
+    const inputDate = toLocalDateString(sqlDate);
     router.push(`/admin/updatewinnews/${lottoCatId}?inputDate=${inputDate}`);
   }
 
@@ -176,7 +175,7 @@ export default function ListResults({ lottoCategorys }: { lottoCategorys: Select
       return;
     }
 
-    const inputDate = sqlDate.toISOString().split("T")[0];
+    const inputDate = toLocalDateString(sqlDate);
     router.push(`/admin/updaterafflenums/${lottoCatId}?inputDate=${inputDate}`);
   }
 
@@ -194,7 +193,7 @@ export default function ListResults({ lottoCategorys }: { lottoCategorys: Select
       return;
     }
 
-    const inputDate = sqlDate.toISOString().split("T")[0];
+    const inputDate = toLocalDateString(sqlDate);
     router.push(`/admin/updaterafflenews/${lottoCatId}?inputDate=${inputDate}`);
   }
 
@@ -208,7 +207,7 @@ export default function ListResults({ lottoCategorys }: { lottoCategorys: Select
     }
 
     const lottoCatId = Number(lottoCat);
-    const inputDate = sqlDate.toISOString().split("T")[0];
+    const inputDate = toLocalDateString(sqlDate);
 
     const t = toast.loading("Deleting records...");
 

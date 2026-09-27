@@ -37,7 +37,6 @@ export async function adminInsertActionWrapper(
   if (!parsed.success) {
     return { success: false, error: "Invalid input" };
   }
-  // console.log("Would insert:", parsed.data); // inspect what would be sent to Prisma // Testing without actual DB insert
   const { insertedId } = await insertLottoNumbers(parsed.data);
 
   return { success: true, error: null, insertedId };
@@ -81,7 +80,6 @@ export async function insertWinningAmounts(
     return { success: false, error: "Invalid input" };
   }
 
-  // console.log("Would insert:", parsed.data); // inspect what would be sent to Prisma // Testing without
   const result = await insertWinRecords(parsed.data.winRows);
 
   return { success: true, error: null, insertedCount: result.count };
@@ -113,11 +111,9 @@ export async function adminInsertNewsWrapper(
     return { success: false, error: "Invalid input" };
   }
 
-  // console.log("Would insert:", parsed.data); // inspect what would be sent to Prisma // Testing without
   const { insertedId } = await insertLottoNews(parsed.data);
 
   return { success: true, error: null, insertedId };
-  // return { success: true, error: null, insertedId: 999  }; //Testing without actual DB insert
 }
 
 // *************************************************************************

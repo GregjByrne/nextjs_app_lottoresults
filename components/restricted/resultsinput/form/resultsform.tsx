@@ -58,7 +58,6 @@ export default function ResultForm({lottoCategorys}: {lottoCategorys: SelectCate
     }, [form]);
 // **************************************************************************************************
 
-// console.log(form.formState.errors);
 
 // **************************************************************************************************
     // onSubmit function -> insert latest lotto results
