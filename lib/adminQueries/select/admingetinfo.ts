@@ -1,11 +1,12 @@
 import { prisma } from "@/lib/prisma";
-import { cacheTag } from "next/cache";
+import { cacheLife, cacheTag } from "next/cache";
 
 // Get the Lotto Categorys & id for Admin Select box
 export async function getLottoCategorys() {
 
   "use cache";
   cacheTag("lottocategory");
+  cacheLife({ revalidate: 3600 });
   
   const lottoCategories = await prisma.lottocategory.findMany({
     select: {

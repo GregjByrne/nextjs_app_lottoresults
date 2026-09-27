@@ -1,9 +1,10 @@
 import { prisma } from "@/lib/prisma";
-import { cacheTag } from "next/cache";
+import { cacheLife, cacheTag } from "next/cache";
 
 export async function getRaffleNumbers(lottoCatId: number, inputDate: Date) {
   "use cache";
   cacheTag("rafflenumbers");
+  cacheLife({ revalidate: 15 });
 
   const rows = await prisma.rafflenumbers.findMany({
     where: { lottoCatId, inputDate },

@@ -1,10 +1,11 @@
 import { prisma } from "@/lib/prisma";
-import { cacheTag } from "next/cache";
+import { cacheLife, cacheTag } from "next/cache";
 
 // Get the winnings results for a specific date and lotto category
 export async function getWinningsByCategoryAndDate(categories: number[], date: string) {
   "use cache";
   cacheTag("winrecords");
+  cacheLife({ revalidate: 15 });
 
   if (categories.length === 0) return [];
 

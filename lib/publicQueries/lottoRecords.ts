@@ -1,10 +1,11 @@
 import { prisma } from "@/lib/prisma";
-import { cacheTag } from "next/cache";
+import { cacheLife, cacheTag } from "next/cache";
 
 // Get the latest draw date for a specific lotto category
 export async function getLatestDate(lottoCatId: number) {
   "use cache";
   cacheTag("lottorecords");
+  cacheLife({ revalidate: 15 });
 
   const latestDraw = await prisma.lottorecords.findFirst({
     where: { lottoCatId },
@@ -18,6 +19,7 @@ export async function getResultsByCategoryAndDate(categories: number[], date: st
   "use cache";
   cacheTag("lottorecords");
   cacheTag("winnews");
+  cacheLife({ revalidate: 15 });
 
   if (categories.length === 0) return [];
 
