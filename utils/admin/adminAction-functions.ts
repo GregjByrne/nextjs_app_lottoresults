@@ -4,11 +4,11 @@ import { Prisma } from "@/app/generated/prisma/client";
 import z from "zod";
 
 // *************************************************************************
-// Normalize Lottery Numbers Insert:
-export function normalizeLottoEntry(data: z.infer<typeof formSchema>): Prisma.lottorecordsUncheckedCreateInput{
-    return {
-    lottoCatId: data.lottoCat, // renamed from lottoCat -> lottoCatId to match schema
-    inputDate: new Date(data.inputDate), // string -> Date
+// // Normalize Lottery Numbers Insert:
+export function normalizeLottoEntry(data: z.infer<typeof formSchema>): Prisma.lottorecordsUncheckedCreateInput {
+  const normalized = {
+    lottoCatId: data.lottoCat,
+    inputDate: toUTCMidnight(new Date(data.inputDate)), // was: new Date(data.inputDate) directly
     num_1: data.num_1,
     num_2: data.num_2,
     num_3: data.num_3,
@@ -18,17 +18,20 @@ export function normalizeLottoEntry(data: z.infer<typeof formSchema>): Prisma.lo
     num_7: data.num_7,
     winValue: data.winValue,
   };
-};
+  return normalized;
+}
+
 // *************************************************************************
 
 // *************************************************************************
 // Normalize Lottery Number Winniner / Winning Amount Insert:
 export function normalizeWinEntry(data: WinResultFormValues): InsertWinAmountsType {
+   const normalizedDate = toUTCMidnight(new Date(data.inputDate));
   return {
-    inputDate: new Date(data.inputDate).toISOString().slice(0, 10),
+    inputDate: normalizedDate.toISOString().slice(0, 10),
     lottoCatId: Number(data.lottoCat),
     winRows: data.winRows.map((row) => ({
-      inputDate: new Date(data.inputDate),
+      inputDate: normalizedDate,
       lottoCatId: Number(data.lottoCat),
       winCatId: row.winCatId,
       numWinners: row.numWinners ?? 0,
@@ -45,7 +48,7 @@ export function normalizeWinEntry(data: WinResultFormValues): InsertWinAmountsTy
 // Normalize Lottery News Insert:
 export function normalizeNewsEntry(data: WinNewsFormValues): Prisma.winnewsUncheckedCreateInput {
   return {
-    inputDate: new Date(data.inputDate),
+    inputDate: toUTCMidnight(new Date(data.inputDate)),
     lottoCatId: Number(data.lottoCat),
     winNews: data.winNews,
   };
@@ -80,17 +83,28 @@ export function toLocalDateString(date: Date): string {
 
 
 // *************************************************************************
+// Format Insert Dates using local date components:
+
+export function toUTCMidnight(date: Date): Date {
+  return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+}
+
+// *************************************************************************
+
+// *************************************************************************
 // Normalize Raffle Numbers Insert:
 export function normalizeRaffleEntry(data: RaffleNumbersFormValues): {
   inputDate: string;
   lottoCatId: number;
   raffleRows: Prisma.rafflenumbersUncheckedCreateInput[];
 } {
+  const normalizedDate = toUTCMidnight(new Date(data.inputDate));
+
   return {
-    inputDate: new Date(data.inputDate).toISOString().slice(0, 10),
+    inputDate: normalizedDate.toISOString().slice(0, 10), // string, for display/reference
     lottoCatId: Number(data.lottoCat),
     raffleRows: data.raffleNumbers.map((row) => ({
-      inputDate: new Date(data.inputDate),
+      inputDate: normalizedDate, // same corrected Date, used by Prisma
       lottoCatId: Number(data.lottoCat),
       raffleNumber: row.raffleNumber,
     })),
@@ -105,7 +119,7 @@ export function normalizeRaffleEntry(data: RaffleNumbersFormValues): {
 
 export function normalizeRaffleNewsEntry(data: RaffleNewsFormValues): Prisma.rafflenewsUncheckedCreateInput {
   return {
-    inputDate: new Date(data.inputDate),
+    inputDate: toUTCMidnight(new Date(data.inputDate)),
     lottoCatId: Number(data.lottoCat),
     raffleNews: data.raffleNews,
   };

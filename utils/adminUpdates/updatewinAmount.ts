@@ -16,7 +16,7 @@ const winRowUpdateSchema = z.object({
 });
 
 const winAmountsUpdatePayloadSchema = z.object({
-  inputDate: z.string(),
+  inputDate: z.coerce.date(),
   lottoCatId: z.number().int().min(1),
   winRows: z.array(winRowUpdateSchema).min(1),
 });

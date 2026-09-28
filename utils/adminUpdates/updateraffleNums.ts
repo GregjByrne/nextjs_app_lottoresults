@@ -11,7 +11,7 @@ const raffleRowSchema = z.object({
 });
 
 const raffleNumbersUpdatePayloadSchema = z.object({
-  inputDate: z.string(),
+  inputDate: z.coerce.date(),
   lottoCatId: z.number().int().min(1),
   raffleRows: z.array(raffleRowSchema).min(1, "At least one raffle number is required"),
 });
