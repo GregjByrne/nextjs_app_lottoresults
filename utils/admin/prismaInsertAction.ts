@@ -11,13 +11,13 @@ import { auth } from "@clerk/nextjs/server";
 const lottoRecordSchema = z.object({
   inputDate: z.coerce.date(),
   lottoCatId: z.number().int(), // renamed from lottoCat
-  num_1: z.number().int().min(1),
-  num_2: z.number().int().min(1),
-  num_3: z.number().int().min(1),
-  num_4: z.number().int().min(1),
-  num_5: z.number().int().min(1),
-  num_6: z.number().int().min(0),
-  num_7: z.number().int().min(0),
+  num_1: z.number().int(),
+  num_2: z.number().int(),
+  num_3: z.number().int(),
+  num_4: z.number().int(),
+  num_5: z.number().int(),
+  num_6: z.number().int(),
+  num_7: z.number().int(),
   winValue: z.number(),
 });
 
