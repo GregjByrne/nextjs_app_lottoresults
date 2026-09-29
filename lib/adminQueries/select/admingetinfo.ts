@@ -1,12 +1,9 @@
 import { prisma } from "@/lib/prisma";
-import { cacheLife, cacheTag } from "next/cache";
+import { connection } from "next/server";
 
 // Get the Lotto Categorys & id for Admin Select box
 export async function getLottoCategorys() {
-
-  "use cache";
-  cacheTag("lottocategory");
-  cacheLife({ revalidate: 3600 });
+ await connection(); // tells Next.js: this must render at request time, not build time
   
   const lottoCategories = await prisma.lottocategory.findMany({
     select: {

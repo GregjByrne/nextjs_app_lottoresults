@@ -1,12 +1,9 @@
+import { connection } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { cacheLife, cacheTag } from "next/cache";
 
 // Get the latest draw date for a specific lotto category
 export async function getLatestDate(lottoCatId: number) {
-  "use cache";
-  cacheTag("lottorecords");
-  cacheLife({ revalidate: 15 });
-
+  await connection(); // tells Next.js: this must render at request time, not build time
   const latestDraw = await prisma.lottorecords.findFirst({
     where: { lottoCatId },
     orderBy: { inputDate: "desc" },
@@ -16,11 +13,7 @@ export async function getLatestDate(lottoCatId: number) {
 
 // Multiple Lotto Results joined with Lotto News for a specific date and lotto category
 export async function getResultsByCategoryAndDate(categories: number[], date: string) {
-  "use cache";
-  cacheTag("lottorecords");
-  cacheTag("winnews");
-  cacheLife({ revalidate: 15 });
-
+  await connection(); // tells Next.js: this must render at request time, not build time
   if (categories.length === 0) return [];
 
   const inputDate = new Date(date);

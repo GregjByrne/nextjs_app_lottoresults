@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma";
 
-// No "use cache" — admin needs live data
+
 export async function getWinAmountsForAdmin(lottoCatId: number, inputDate: Date) {
   return prisma.winrecords.findMany({
     where: { lottoCatId, inputDate },

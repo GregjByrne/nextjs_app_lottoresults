@@ -1,7 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { Prisma } from "@/app/generated/prisma/client";
 
-// No "use cache" — admin always needs live data
 export async function getLatestDateForAdmin(lottoCatId: number) {
   const latest = await prisma.lottorecords.findFirst({
     where: { lottoCatId },
