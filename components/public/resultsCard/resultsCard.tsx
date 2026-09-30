@@ -21,15 +21,18 @@ export default async function ResultsCard({catid}: {catid: number}){
        return notFound();
     }
    const categoryGroup = getCategoryGroups(catid);
-   const winningDetails = await getWinningsByCategoryAndDate(categoryGroup, latestDate);
-   if(!winningDetails || winningDetails.length === 0){
-       return notFound();
-    }
-    const results = await getResultsByCategoryAndDate(categoryGroup, latestDate);
+
+   const results = await getResultsByCategoryAndDate(categoryGroup, latestDate);
+   console.log('Test RecordDetails: ', results);
     if(!results || results.length === 0){
        return notFound();
     }
-
+   
+   const winningDetails = await getWinningsByCategoryAndDate(categoryGroup, latestDate);
+  //  if(!winningDetails || winningDetails.length === 0){
+  //      return notFound();
+  //   }
+    
     const rows = results;
     const winnigrows = winningDetails;
     const resultSections = convertResults(rows);
