@@ -1,8 +1,9 @@
 import { prisma } from "@/lib/prisma";
-import { connection } from "next/server";
+import { cacheTag } from "next/cache";
 
 export async function getRaffleNumbers(lottoCatId: number, inputDate: Date) {
-  await connection(); // tells Next.js: this must render at request time, not build time
+  "use cache";
+  cacheTag("rafflenumbers");  //// tells Next.js: this must render at request time, not build time
   const rows = await prisma.rafflenumbers.findMany({
     where: { lottoCatId, inputDate },
     orderBy: { id: "asc" },

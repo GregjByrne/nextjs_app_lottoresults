@@ -49,6 +49,9 @@ test-query.ts
 /data/
 /scripts/
 
+# For Coolify
+amplify.yml
+
 # Prisma:
 /app/generated/prisma
 /prisma/dev/

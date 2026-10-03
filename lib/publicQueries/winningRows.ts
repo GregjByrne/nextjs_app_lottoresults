@@ -1,9 +1,10 @@
 import { prisma } from "@/lib/prisma";
-import { connection } from "next/server";
+import { cacheTag } from "next/cache";
 
 // Get the winnings results for a specific date and lotto category
 export async function getWinningsByCategoryAndDate(categories: number[], date: string) {
-  await connection(); // tells Next.js: this must render at request time, not build time
+  "use cache";
+  cacheTag("winrecords");
   if (categories.length === 0) return [];
 
   const winnings = await prisma.winrecords.findMany({
