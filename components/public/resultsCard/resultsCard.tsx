@@ -23,7 +23,7 @@ export default async function ResultsCard({catid}: {catid: number}){
    const categoryGroup = getCategoryGroups(catid);
 
    const results = await getResultsByCategoryAndDate(categoryGroup, latestDate);
-   console.log('Test RecordDetails: ', results);
+   
     if(!results || results.length === 0){
        return notFound();
     }
