@@ -9,7 +9,7 @@ if (!process.env.SSL_CERT_CONTENT) {
 }
 
 
-const sslCertContent = process.env.SSL_CERT_CONTENT.replace(/\\n/g, "\n");
+const sslCert = process.env.SSL_CERT_CONTENT;
 
 const adapter = new PrismaMariaDb({
   host: process.env.DATABASE_HOST,
@@ -18,10 +18,9 @@ const adapter = new PrismaMariaDb({
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE_NAME,
   connectionLimit: 5,
-  ssl: {
-    ca: sslCertContent,
-    rejectUnauthorized: true,
-  },
+  ...(sslCert
+    ? { ssl: { ca: sslCert.replace(/\\n/g, "\n"), rejectUnauthorized: true } }
+    : {}),
 });
 
 export const prisma =

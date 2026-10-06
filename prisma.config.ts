@@ -10,6 +10,6 @@ export default defineConfig({
     seed: "npx tsx prisma/seed.ts",
   },
   datasource: {
-    url: `${env("DATABASE_URL")}&sslcert=${env("SSL_CERT_PATH")}`,
+    url: process.env.DATABASE_URL ?? "mysql://placeholder:placeholder@localhost:3306/placeholder",
   },
 });
