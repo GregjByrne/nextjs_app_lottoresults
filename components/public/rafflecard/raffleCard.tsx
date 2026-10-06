@@ -1,8 +1,10 @@
 import { getLatestDate } from "@/lib/publicQueries/lottoRecords";
 import { getRaffleNumbers } from "@/lib/publicQueries/rafflenumbers";
 import { getRaffleNews } from "@/lib/publicQueries/rafflenews";
+import { connection } from "next/server";
 
 export default async function RaffleCard({ catid }: { catid: number }) {
+  await connection(); // render at request time, never during the build
   const latestDate = await getLatestDate(catid);
 
   if (!latestDate) return null;

@@ -12,9 +12,10 @@ import { LottoCategoryName, WinCategoryName } from "@/constants/lottoCategories"
 import { notFound } from "next/navigation";
 import { BonusNumberLabel, TopPriceLabel } from "@/constants/lottoLookups";
 import WinningRows from "@/components/public/resultsCard/winningRows";
-
+import { connection } from "next/server";
 
 export default async function ResultsCard({catid}: {catid: number}){
+  await connection(); // render at request time, never during the build
 
    const latestDate = await getLatestDate(catid);
    if(!latestDate){

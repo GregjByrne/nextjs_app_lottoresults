@@ -43,9 +43,6 @@ export default function Home() {
         <Suspense fallback={<ResultsCardSkeleton count={CATEGORY_CARD_COUNTS[1]} />}>
           <ResultsCard catid={1} />
         </Suspense>
-        <Suspense fallback={<RaffleCardSkeleton numbersCount={1} />}>
-          <RaffleCard catid={1} />
-        </Suspense>
       </section>
       {/* <!-- AdId001_lottoresults --> */}
        <AdBanner adSlot="6414138135" adFormat="auto" dataFullWidthResponsive={ true} />
