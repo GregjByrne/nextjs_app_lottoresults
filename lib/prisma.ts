@@ -4,11 +4,6 @@ import { PrismaClient } from "../app/generated/prisma/client";
 
 const globalForPrisma = global as unknown as { prisma: PrismaClient };
 
-if (!process.env.SSL_CERT_CONTENT) {
-  throw new Error("SSL_CERT_CONTENT is not set in environment variables");
-}
-
-
 const sslCert = process.env.SSL_CERT_CONTENT;
 
 const adapter = new PrismaMariaDb({
