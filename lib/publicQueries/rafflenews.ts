@@ -1,10 +1,11 @@
 import { prisma } from "@/lib/prisma";
-import { cacheTag } from "next/cache";
+import { cacheLife, cacheTag } from "next/cache";
 
 export async function getRaffleNews(lottoCatId: number, inputDate: Date) {
 
   "use cache";
-  cacheTag("rafflenews");  // tells Next.js: this must render at request time, not build time
+  cacheTag("rafflenews"); 
+  cacheLife("results"); // tells Next.js: this must render at request time, not build time
   const record = await prisma.rafflenews.findFirst({
     where: { lottoCatId, inputDate },
   });
