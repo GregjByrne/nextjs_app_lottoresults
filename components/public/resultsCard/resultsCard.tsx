@@ -30,9 +30,6 @@ export default async function ResultsCard({catid}: {catid: number}){
     }
    
    const winningDetails = await getWinningsByCategoryAndDate(categoryGroup, latestDate);
-  //  if(!winningDetails || winningDetails.length === 0){
-  //      return notFound();
-  //   }
     
     const rows = results;
     const winnigrows = winningDetails;
@@ -111,7 +108,14 @@ export default async function ResultsCard({catid}: {catid: number}){
                                   <thead>
                                     <tr className="text-sm">
                                       <th className="p-2 md:pl-9 min-h-12 w-1/4 text-left">Match</th>
-                                      <th className="sm:px-3 p-2 min-h-12 w-1/4 text-right">Winners</th>
+                                      <th className="sm:px-3 p-2 min-h-12 w-1/4 text-right">
+                                      Winners {section.lottoCatId === 4 && (
+                                        '(all)'
+                                      )}
+                                      </th>
+                                      {section.lottoCatId === 4 && (
+                                        <th className="sm:px-3 p-2 min-h-12 w-1/4 text-right">Irish Winners</th>
+                                      )}
                                       <th className="p-2 pr-3 md:pr-9 min-h-12 w-1/4 text-right">Prize</th>
                                     </tr>
                                      {winnigrows
@@ -120,8 +124,10 @@ export default async function ResultsCard({catid}: {catid: number}){
                                           <WinningRows 
                                               key={idx} 
                                               winCat={WinCategoryName[wrow.winCatId]} 
-                                              numWinners={wrow.numWinners} 
-                                              winAmount={wrow.winAmount} 
+                                              numWinners={wrow.numWinners}
+                                              emIrishWinners={wrow.emIrishWinners}
+                                              winAmount={wrow.winAmount}
+                                              lottoCatId={wrow.lottoCatId}
                                           /> 
                                       ))}
                                   </thead>
