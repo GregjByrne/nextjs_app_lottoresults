@@ -42,16 +42,16 @@ export default async function ResultsCard({catid}: {catid: number}){
             <div className="w-full grid grid-flow-col grid-rows-1 gap-4">
               <div className="lg:w-full flex flex-col justify-evenly">
                 <div className="px-4 md:px-9">
-                  <div className="bg-white flex justify-between pt-3 pb-3 rounded-t-lg text-sm">
-                    <div className="w-60 -mb-1">
-                        <h3 className="font-serif text-xl font-bold text-red-600">{LottoCategoryName[section.lottoCatId]}</h3>
+                  <div className="bg-white flex justify-between pt-3 pb-3 rounded-t-lg text-base">
+                    <div className="sm:w-60 -mb-1">
+                        <h3 className="font-serif text-base md:text-xl font-bold text-red-600">{LottoCategoryName[section.lottoCatId]}</h3>
                         <span className="font-serif text-gray-500">{section.inputDate}</span>
                     </div>
                     <div className="text-right font-serif text-gray-500">
                         <p className="text-bold text-base ">
                           <span className="font-bold">{TopPriceLabel[section.lottoCatId]}</span>
                         </p>
-                        <p className="font-black text-sm">{section.winValue.toLocaleString("en-IE", {
+                        <p className="font-black text-base md:text-sm">{section.winValue.toLocaleString("en-IE", {
                                                                                             style:"currency", 
                                                                                             currency:"EUR",
                                                                                             minimumFractionDigits: 0,

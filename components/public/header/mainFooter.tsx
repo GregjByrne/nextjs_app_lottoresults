@@ -16,7 +16,7 @@ export default function MainFooter(){
                             </div>
                             <div className="flex flex-col gap-2 text-lg p-4 lg:p-0 lg:flex">
                                 <div>
-                                    <Link href="/#IrishLotto" className="text-sm text-white hover:text-blue-500 hover-underline-animation center">Irish Lottery</Link>
+                                    <Link href="/" className="text-sm text-white hover:text-blue-500 hover-underline-animation center">Irish Lottery</Link>
                                 </div>
                             </div>
                         </div>
@@ -26,7 +26,7 @@ export default function MainFooter(){
                             </div>
                             <div className="flex flex-col gap-2 text-lg p-4 lg:p-0 lg:flex">
                                 <div>
-                                    <Link href="/#EuroMillions" className="text-sm text-white hover:text-blue-500 hover-underline-animation center">Euro Millions</Link>
+                                    <Link href="/euroMillions" className="text-sm text-white hover:text-blue-500 hover-underline-animation center">Euro Millions</Link>
                                 </div>
                             </div>
 
@@ -37,7 +37,7 @@ export default function MainFooter(){
                             </div>
                             <div className="flex flex-col gap-2 text-lg p-4 lg:p-0 lg:flex">
                                 <div>
-                                    <Link href="/#DailyMillion" className="text-sm text-white hover:text-blue-500 hover-underline-animation center">Daily Million</Link>
+                                    <Link href="/dailyMillion" className="text-sm text-white hover:text-blue-500 hover-underline-animation center">Daily Million</Link>
                                 </div>
                             </div>
                         </div>

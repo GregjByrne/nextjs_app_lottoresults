@@ -3,15 +3,15 @@ import Link from "next/link";
 
 const navLinks = [
     {
-        href: '#IrishLotto',
+        href: '/',
         label: 'Irish Lotto',
     },
     {
-        href: '#EuroMillions',
+        href: '/euroMillions',
         label: 'Euro Millions',
     },
     {
-        href: '#DailyMillion',
+        href: '/dailyMillion',
         label: 'Daily Million',
     },
 ]
@@ -23,7 +23,7 @@ export default function MainHeader(){
           <div className="flex justify-between gap-2">
            <VolleyballIcon className="mt-3" size={16} color="#5b53d5" />
             <Link href='/' className="mr-2 block cursor-pointer py-1.5 text-base text-gray-200">
-              <h1 className="font-serif text-xl font-bold bg-linear-to-r from-violet-600 to-indigo-700 bg-clip-text text-transparent">Irish Lotto Results</h1>
+              <span className="font-serif text-xl font-bold bg-linear-to-r from-violet-600 to-indigo-700 bg-clip-text text-transparent">Irish Lotto Results</span>
             </Link>
             </div>
             <nav className="flex gap-2 mt-2 mb-4 lg:mb-0 lg:mt-0 flex-row lg:items-center lg:gap-6">

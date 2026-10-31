@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import AdsInjectioin from "@/components/public/googlead/adsInjection";
+import MainHeader from "@/components/public/header/mainHeader";
+import MainFooter from "@/components/public/header/mainFooter";
 
 export const metadata: Metadata = {
   title: {
@@ -55,7 +57,27 @@ export const viewport = {
   themeColor: '#ffffff',
 };
 
+
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "name": "Irish Lotto Results",
+    "image": "https://irish-lotto-results.ie/assets/manifest/og-image.png",
+    "description": "View the latest Irish Lotto results and check the winning numbers for all three draws, including Plus 1 and Plus 2 after every Monday, Wednesday and Saturday draw.",
+    "address": {
+      "@type": "PostalAddress", // Corrected standard type
+      "streetAddress": "Dublin",
+      "addressLocality": "Dublin",
+      "addressCountry": "IE"
+    },
+    "telephone": "+353",
+    "url": "https://irish-lotto-results.ie/",
+    "priceRange": "€€"
+  };
+
   return (
     <html
       lang="en"
@@ -64,7 +86,21 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <AdsInjectioin pId={process.env.NEXT_ADSENSE_PUB_ID  || ''} />
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      
+      <body className="min-h-full flex flex-col">
+        <main className="bg-linear-to-r from-gray-800 via-blue-700 to-gray-900">
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          />
+          <MainHeader />
+          
+            {children}
+
+          <MainFooter />
+        </main>
+        
+      </body>
     </html>
   );
 }
