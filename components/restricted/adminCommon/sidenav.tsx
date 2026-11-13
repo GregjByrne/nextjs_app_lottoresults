@@ -76,6 +76,14 @@ export default function SideBar(){
                             </span>
                         </Link>
                     </li>
+                    <li className={`py-1 adminNavLink ${pathname === '/admin/news' ? 'active' : ''}`}>
+                         <Link className="flex items-center rounded-sm hover:bg-blue-600 w-50"  href='/admin/news'>
+                            <FileInputIcon size={16} color="#3921e8" />
+                                <span className="ml-4">
+                                News Articles:
+                            </span>
+                        </Link>
+                    </li>
                     <li className={`py-1 adminNavLink ${pathname === '/admin/logout' ? 'active' : ''}`}>
                         <LogoutLink />
                     </li>

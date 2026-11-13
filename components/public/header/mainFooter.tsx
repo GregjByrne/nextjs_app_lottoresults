@@ -12,32 +12,41 @@ export default function MainFooter(){
                 <div className="flex flex-col items-center lg:items-stretch lg:flex-row lg:gap-7 lg:pb-10 pb-4 border-b">
                         <div className="w-full text-center lg:text-left lg:w-64 grow">
                             <div>
-                                <h3 className="grow text-center lg:text-left font-montserrat lg:font-buendia">Link:</h3>
+                                <h3 className="grow text-center lg:text-left font-montserrat lg:font-buendia underline underline-offset-4">Lotto Links:</h3>
                             </div>
                             <div className="flex flex-col gap-2 text-lg p-4 lg:p-0 lg:flex">
-                                <div>
-                                    <Link href="/" className="text-sm text-white hover:text-blue-500 hover-underline-animation center">Irish Lottery</Link>
+                                <div className="pl-2">
+                                    <Link href="/" className="text-sm text-white hover:text-blue-500 hover-underline-animation center">Irish Lotto Results</Link>
+                                </div>
+                                <div className="pl-2">
+                                    <Link href="/irish-lotto-statistics" className="text-sm text-white hover:text-blue-500 hover-underline-animation center">Irish Lotto statistics</Link>
                                 </div>
                             </div>
                         </div>
                         <div className="w-full text-center lg:text-left lg:w-64 grow">
-                            <div>
-                                <h3 className="grow text-center lg:text-left font-montserrat lg:font-buendia">Link:</h3>
+                            <div >
+                                <h3 className="grow text-center lg:text-left font-montserrat lg:font-buendia underline underline-offset-4">EuroMillions Links:</h3>
                             </div>
                             <div className="flex flex-col gap-2 text-lg p-4 lg:p-0 lg:flex">
-                                <div>
-                                    <Link href="/euroMillions" className="text-sm text-white hover:text-blue-500 hover-underline-animation center">Euro Millions</Link>
+                                <div className="pl-2">
+                                    <Link href="/euromillions-results" className="text-sm text-white hover:text-blue-500 hover-underline-animation center">EuroMillions Results</Link>
+                                </div>
+                                <div className="pl-2">
+                                    <Link href="/euromillions-statistics" className="text-sm text-white hover:text-blue-500 hover-underline-animation center">EuroMillions statistics</Link>
                                 </div>
                             </div>
 
                         </div>
                         <div className="w-full text-center lg:text-left lg:w-64 grow">
                             <div>
-                                <h3 className="grow text-center lg:text-left font-montserrat lg:font-buendia">Link:</h3>
+                                <h3 className="grow text-center lg:text-left font-montserrat lg:font-buendia underline underline-offset-4">Daily Million Links:</h3>
                             </div>
                             <div className="flex flex-col gap-2 text-lg p-4 lg:p-0 lg:flex">
-                                <div>
-                                    <Link href="/dailyMillion" className="text-sm text-white hover:text-blue-500 hover-underline-animation center">Daily Million</Link>
+                                <div className="pl-2">
+                                    <Link href="/daily-million-results" className="text-sm text-white hover:text-blue-500 hover-underline-animation center">Daily Million</Link>
+                                </div>
+                                <div className="pl-2">
+                                    <Link href="/daily-million-statistics" className="text-sm text-white hover:text-blue-500 hover-underline-animation center">Daily Million statistics</Link>
                                 </div>
                             </div>
                         </div>

@@ -5,8 +5,19 @@ import { Prisma } from "@/app/generated/prisma/client";
 // *************************************************************************************************
 // Insert Latest Lottery Numbers 
     export async function insertLottoNumbers(data: Prisma.lottorecordsUncheckedCreateInput) {
+      try {
         const record = await prisma.lottorecords.create({ data });
-        return { insertedId: record.id };
+        return { success: true, data: { id: record.id }, error: null };
+      } catch (err) {
+        if (err instanceof Prisma.PrismaClientKnownRequestError && err.code === "P2002") {
+          return {
+            success: false,
+            data: null,
+            error: "Results for this draw date already exist. Use Update Results instead.",
+          };
+        }
+        throw err; // anything else is a real failure
+      }
     }
 // *************************************************************************************************
 

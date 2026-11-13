@@ -1,6 +1,6 @@
 export default function LottoDescription(){
     return(
-        <section className="relative mx-auto flex flex-col items-center justify-center py-16 px-4 sm:py-20 lg:pd-28 lg:px-12 max-w-5xl transition-all animate-in text-white">
+        <section className="relative mx-auto flex flex-col items-center justify-center px-4 lg:px-12 py-2 sm:py-5 max-w-5xl transition-all animate-in text-white">
 
             <div>
                 <h4 className="font-bold italic py-6 text-center [text-shadow:-5px_5px_3px_#000000] text-3xl text-white">
@@ -15,7 +15,7 @@ export default function LottoDescription(){
                             Draw Schedule & Cut-Off Times:
                         </span>
                         <div className="pl-5">
-                            <ul className="list-disc pl-5 text-sm font-normal text text-zinc-200 lg:text-left text-center">
+                            <ul className="list-disc pl-5 text-sm font-normal text text-zinc-200 lg:text-left">
                                 <li className="px-2 py-2">
                                     <strong>Draw Days: </strong>Winning numbers are drawn three times a week on <b>Mondays</b>, <b>Wednesdays</b>, and <b>Saturdays.</b>
                                 </li>
@@ -39,7 +39,7 @@ export default function LottoDescription(){
                             When you purchase a ticket, you also have the option to opt into the <b>Lotto Plus</b> games for an additional fee per line:
                         </p>
                         <div className="pl-5">
-                            <ol className="list-disc pl-5 text-sm font-normal text text-zinc-200 lg:text-left text-center">
+                            <ol className="list-disc pl-5 text-sm font-normal text text-zinc-200 lg:text-left">
                                 <li className="px-2 py-2">
                                     <strong>Lotto Plus 1: </strong>Your chosen 6 numbers are entered into a second draw with a top prize of €1,000,000.
                                 </li>

@@ -1,6 +1,6 @@
 export default function EuroMillionsDescription(){
     return(
-        <section className="relative mx-auto flex flex-col items-center justify-center py-16 px-4 sm:py-20 lg:pd-28 lg:px-12 max-w-5xl transition-all animate-in text-white">
+        <section className="relative mx-auto flex flex-col items-center justify-center px-4 lg:px-12 py-2 sm:py-5 max-w-5xl transition-all animate-in text-white">
 
             <div>
                 <h4 className="font-bold italic py-6 text-center [text-shadow:-5px_5px_3px_#000000] text-3xl text-white">
@@ -15,7 +15,7 @@ export default function EuroMillionsDescription(){
                             Draw Times & Final Ticket Deadlines:
                         </span>
                         <div className="pl-5">
-                            <ul className="list-disc pl-5 text-sm font-normal text text-zinc-200 lg:text-left text-center">
+                            <ul className="list-disc pl-5 text-sm font-normal text text-zinc-200 lg:text-left">
                                 <li className="px-2 py-2">
                                     <strong>Draw Schedule: </strong>Draws occur twice weekly on <b>Tuesdays and Fridays.</b>
                                 </li>
@@ -42,7 +42,7 @@ export default function EuroMillionsDescription(){
                             For every standard €2.50 panel you buy, a unique nine-character raffle code (consisting of four letters and five numbers, starting with the letter &quot;I&quot;) is automatically printed on your ticket receipt.
                         </p>
                         <div className="pl-5">
-                            <ul className="list-disc pl-5 text-sm font-normal text text-zinc-200 lg:text-left text-center">
+                            <ul className="list-disc pl-5 text-sm font-normal text text-zinc-200 lg:text-left">
                                 <li className="px-2 py-2">
                                     <strong>Guaranteed Winners: </strong>During every single Tuesday and Friday draw, exactly <b>10 Irish raffle codes are guaranteed to be drawn.</b>
                                 </li>
@@ -61,7 +61,7 @@ export default function EuroMillionsDescription(){
                             For an additional <b>€1.00 per panel,</b> you can opt into EuroMillions Plus. This game enters your five main selected numbers into a completely separate Irish-only drawing system.
                         </p>
                         <div className="pl-5">
-                            <ul className="list-disc pl-5 text-sm font-normal text text-zinc-200 lg:text-left text-center">
+                            <ul className="list-disc pl-5 text-sm font-normal text text-zinc-200 lg:text-left">
                                 <li className="px-2 py-2">
                                     <strong>No Lucky Stars: </strong>The Plus draw only extracts 5 numbers from a pool of 1 to 50.
                                 </li>

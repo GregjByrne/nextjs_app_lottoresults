@@ -7,7 +7,7 @@ function ResultsCardSkeletonItem() {
           <div className="px-4 md:px-9">
           {/* Header: title/date left, prize label/amount right */}
           <div className="bg-white flex justify-between pt-3 pb-3 rounded-t-lg">
-            <div className="w-60 -mb-1 space-y-2">
+            <div className="sm:w-60 -mb-1">
               <div className="h-6 w-40 bg-gray-200 rounded" />
               <div className="h-4 w-24 bg-gray-200 rounded" />
               </div>
@@ -21,7 +21,7 @@ function ResultsCardSkeletonItem() {
           <div className="pb-5 flex justify-center items-center lg:block">
             <div className="justify-center flex flex-row flex-wrap gap-6 lg:gap-10">
               <div className="flex-col">
-                <div className="h-4 w-32 bg-gray-200 rounded my-1.5" />
+                <div className="leading-5 font-bold py-1.5" />
                 <div className="flex flex-col space-y-4">
                   <div className="flex gap-1.5 md:gap-2 flex-wrap">
                     {Array.from({ length: 6 }).map((_, i) => (
@@ -35,7 +35,7 @@ function ResultsCardSkeletonItem() {
               </div>
 
               <div className="flex-col">
-              <div className="h-4 w-24 bg-gray-200 rounded my-1.5" />
+              <div className="leading-5 font-bold py-1.5" />
               <div className="flex flex-col space-y-4">
               <div className="flex gap-4 md:gap-4 flex-wrap">
               {Array.from({ length: 1 }).map((_, i) => (
@@ -50,7 +50,6 @@ function ResultsCardSkeletonItem() {
               </div>
             </div>
           </div>
-        <hr className="lg:w-full border-solid border-t border-gray-300 relative p-0" aria-hidden="true" />
         {/* Accordion trigger footer */}
           <div className="rounded-b-lg">
             <div className="border-t border-grey-300 py-2 px-4 flex flex-col justify-center items-center">

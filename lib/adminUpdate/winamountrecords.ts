@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 export async function getWinAmountsForAdmin(lottoCatId: number, inputDate: Date) {
   return prisma.winrecords.findMany({
     where: { lottoCatId, inputDate },
-    orderBy: { winCatId: "asc" },
+    orderBy: { winAmount: "desc" },
   });
 }
 

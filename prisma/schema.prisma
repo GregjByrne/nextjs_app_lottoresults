@@ -40,6 +40,7 @@ model lottorecords {
   @@index([inputDate], map: "inputDate")
   @@index([lottoCatId], map: "lottoCatId")
   @@index([lottoCatId], map: "lottoCatId_2")
+  @@unique([lottoCatId, inputDate], map: "uq_cat_date")
 }
 
 model lottotype {
@@ -102,4 +103,27 @@ model rafflenumbers {
 
   @@index([inputDate], map: "inputDate")
   @@index([lottoCatId], map: "lottoCatId")
+}
+
+
+enum NewsStatus {
+  draft
+  published
+}
+
+model newsarticles {
+  id          Int        @id @default(autoincrement())
+  slug        String     @unique(map: "uq_news_slug") @db.VarChar(160)
+  title       String     @db.VarChar(200)
+  excerpt     String     @db.VarChar(300)
+  content     String     @db.LongText
+  coverImage  String?    @db.VarChar(255)
+  coverAlt    String?    @db.VarChar(200)
+  game        String?    @db.VarChar(20)
+  status      NewsStatus @default(draft)
+  publishedAt DateTime?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  @@index([status, publishedAt], map: "idx_news_status_pub")
 }

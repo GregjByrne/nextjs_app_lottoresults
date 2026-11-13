@@ -39,7 +39,7 @@ export default function RaffleNewsTable({ lottoCategorys }: { lottoCategorys: Se
     defaultValues: {
         lottoCat: undefined,
         inputDate: undefined,
-        raffleNews: "Testing New Inputs",
+        raffleNews: "Insert Raffle News Here",
         },
     });
 
@@ -77,9 +77,9 @@ export default function RaffleNewsTable({ lottoCategorys }: { lottoCategorys: Se
     <div className="space-y-4">
       <Card className="w-full sm:mx-w-md">
         <CardHeader>
-          <CardTitle>Lottery Winning News</CardTitle>
+          <CardTitle>Lottery Raffle News</CardTitle>
           <CardDescription>
-            Insert the latest Lottery Winning News
+            Insert the latest Lottery Raffle News
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -113,11 +113,11 @@ export default function RaffleNewsTable({ lottoCategorys }: { lottoCategorys: Se
                 render={({field, fieldState }) => (
                     <Field data-invalid={fieldState.invalid}>
                         <FieldLabel htmlFor="winNews">
-                            Insert Lottery News:
+                            Insert Raffle News:
                         </FieldLabel>
                         <Textarea
                             {...field}
-                            placeholder="Insert Lottrey News."
+                            placeholder="Insert Raffle News."
                             className="no-spinner"
                             id="winNews"
                             value={field.value  ?? ""}

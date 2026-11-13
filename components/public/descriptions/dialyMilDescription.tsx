@@ -1,6 +1,6 @@
 export default function DailyMillionDescription(){
     return(
-        <section className="relative mx-auto flex flex-col items-center justify-center py-16 px-4 sm:py-20 lg:pd-28 lg:px-12 max-w-5xl transition-all animate-in text-white">
+        <section className="relative mx-auto flex flex-col items-center justify-center px-4 lg:px-12 py-2 sm:py-5 max-w-5xl transition-all animate-in text-white">
 
             <div>
                 <h4 className="font-bold italic py-6 text-center [text-shadow:-5px_5px_3px_#000000] text-3xl text-white">
@@ -15,7 +15,7 @@ export default function DailyMillionDescription(){
                             Draw Schedule & Entry Cut-Off Times:
                         </span>
                         <div className="pl-5">
-                            <ul className="list-disc pl-5 text-sm font-normal text text-zinc-200 lg:text-left text-center">
+                            <ul className="list-disc pl-5 text-sm font-normal text text-zinc-200 lg:text-left">
                                 <li className="px-2 py-2">
                                     <strong>Draw Frequency: </strong>Twice daily, 365 days a year.
                                 </li>

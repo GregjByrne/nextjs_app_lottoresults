@@ -69,9 +69,9 @@ export default function RaffleNumbersTable({ lottoCategorys }: { lottoCategorys:
     <div className="space-y-4">
       <Card className="w-full sm:mx-w-md">
         <CardHeader>
-          <CardTitle>Lottery Winning Amounts</CardTitle>
+          <CardTitle>Lottery Raffle Numbers</CardTitle>
           <CardDescription>
-            Insert the latest Lottery Winning Amounts
+            Insert the latest Lottery Raffle Numbers
           </CardDescription>
         </CardHeader>
 

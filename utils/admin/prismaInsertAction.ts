@@ -37,10 +37,13 @@ export async function adminInsertActionWrapper(
   if (!parsed.success) {
     return { success: false, error: "Invalid input" };
   }
-  const { insertedId } = await insertLottoNumbers(parsed.data);
+  const result = await insertLottoNumbers(parsed.data);
 
-  return { success: true, error: null, insertedId };
-  // return { success: true, error: null, insertedId: 999  }; Testing without actual DB insert
+  if (result.error !== null) {
+    return { success: false, error: result.error };
+  }
+
+  return { success: true, error: null, insertedId: result.data.id };
 }
 
 // *************************************************************************
