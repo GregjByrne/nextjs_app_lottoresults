@@ -5,4 +5,4 @@ Disallow: /private/
 Allow: /
 
 # Group 2: Specify the location of your XML sitemap
-Sitemap: https://www.irish-lotto-results.ie/
+sitemap: "https://irish-lotto-results.ie/sitemap.xml"

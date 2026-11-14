@@ -53,3 +53,16 @@ export async function getLatestNews(game: string | null, limit = 3) {
 
   return rows.map((r) => ({ ...r, publishedAt: r.publishedAt!.toISOString() }));
 }
+
+export async function getSitemapArticles() {
+  "use cache";
+  cacheTag("news");   // refreshed by updateTag("news") whenever you publish, edit or delete
+  cacheLife("results");
+
+  const rows = await prisma.newsarticles.findMany({
+    where: live(),                       // published only, same filter as the public pages
+    orderBy: { publishedAt: "desc" },
+    select: { slug: true, updatedAt: true },
+  });
+  return rows.map((r) => ({ slug: r.slug, updatedAt: r.updatedAt.toISOString() }));
+}
