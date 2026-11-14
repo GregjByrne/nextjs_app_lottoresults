@@ -8,6 +8,7 @@ import {
 import { PREVIOUS_GAMES, type GameKey } from "@/constants/previousResults";
 import { getLatestDrawDates } from "@/lib/results/latestDrawDates";
 import { getSitemapArticles } from "@/lib/news/news";
+import { connection } from "next/server";
 
 const BASE = "https://irish-lotto-results.ie";
 
@@ -18,6 +19,7 @@ const GAMES: { key: GameKey; results: string; stats: StatsSection }[] = [
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  await connection();
   const [draws, articles] = await Promise.all([getLatestDrawDates(), getSitemapArticles()]);
   const at = (iso: string | null | undefined) => (iso ? new Date(iso) : undefined);
 
